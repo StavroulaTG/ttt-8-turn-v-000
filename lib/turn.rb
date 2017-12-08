@@ -7,20 +7,28 @@ def display_board(board)
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end
 
-def input_to_index(user_input)
-  user_input.to_i - 1
+def input_to_index(input)
+  input.to_i - 1
 end
 
 def move(board, index, current_player)
   board[index] = current_player
 end
 
-def position_taken?(board, location)
-  board[location] != " " && board[location] != ""
+def position_taken?(board, index)
+  if board[index] == " " || board[index] == nil
+    false
+  else
+    true
+  end
 end
 
 def valid_move?(board, index)
-  index.between?(0,8) && !position_taken?(board, index)
+  if index.between?(0,8) && !position_taken?(board, index)
+    true
+  else
+    false
+  end
 end
 
 def turn(board)
